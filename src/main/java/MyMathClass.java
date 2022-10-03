@@ -1,4 +1,5 @@
 public class MyMathClass {
+    Object object;
     long factorial(int num){
         if(num < 0)
             throw new IllegalArgumentException("argument must be none negative");
@@ -7,19 +8,13 @@ public class MyMathClass {
     }
     double intPow(double x,int a){
         double result = 1;
+        boolean negative = a<0 ? true : false;
+        if(negative) a = -a;
         while (a>0){
             result = result * x;
             a--;
         }
+        if(negative) result = 1.0 / result;
         return result;
-    }
-    long Ackerman(long m, long n){
-        if (m == 0) {
-            return n + 1;
-        } else if (n == 0) {
-            return Ackerman(m - 1, 1);
-        } else {
-            return Ackerman(m - 1, Ackerman(m, n - 1));
-        }
     }
 }
